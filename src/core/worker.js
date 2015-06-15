@@ -314,9 +314,11 @@ var WorkerMessageHandler = PDFJS.WorkerMessageHandler = {
     });
 
     handler.on('GetPageIndex', function wphSetupGetPageIndex(data) {
-      var ref = new Ref(data.ref.num, data.ref.gen);
-      var catalog = pdfManager.pdfDocument.catalog;
-      return catalog.getPageIndex(ref);
+      if(data && data.ref && data.ref.num){
+        var ref = new Ref(data.ref.num, data.ref.gen);
+        var catalog = pdfManager.pdfDocument.catalog;
+        return catalog.getPageIndex(ref);
+      }
     });
 
     handler.on('GetDestinations',

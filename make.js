@@ -636,7 +636,7 @@ function cleanupCSSSource(file) {
 // modern HTML5 browsers. Requires Google Closure Compiler.
 //
 target.minified = function() {
-  var compilerPath = process.env['CLOSURE_COMPILER'];
+  var compilerPath = "./compiler.jar";
   if (!compilerPath) {
     echo('### Closure Compiler is not set. Specify CLOSURE_COMPILER variable');
     exit(1);
@@ -737,14 +737,14 @@ target.buildnumber = function() {
   echo();
   echo('### Getting extension build number');
 
-  var lines = exec('git log --format=oneline ' +
+  /*var lines = exec('git log --format=oneline ' +
                    config.baseVersion + '..', {silent: true}).output;
   // Build number is the number of commits since base version
   BUILD_NUMBER = lines ? lines.match(/\n/g).length : 0;
 
   echo('Extension build number: ' + BUILD_NUMBER);
 
-  VERSION = config.versionPrefix + BUILD_NUMBER;
+  VERSION = config.versionPrefix + BUILD_NUMBER;*/
 };
 
 //
